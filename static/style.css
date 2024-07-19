@@ -31,9 +31,8 @@
 }
 
 .nav-link:hover {
-    background-color:white; /* Background color on hover */
+    outline: white 2px solid;
     border-radius: 4px;
-    color: black;
 }
 
 .headingcontainer {

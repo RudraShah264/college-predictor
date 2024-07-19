@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COLLEGE PREDICTOR</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="headingcontainer">
+        <p class="headingcenter">COLLEGE PREDICTOR</p>
+    </div>   
+<header>
+    <nav class="navbar">
+        <ul class="nav-list">
+            <li class="nav-item"><a href="/home" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
+            <!-- <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li> -->
+        </ul>
+    </nav>
+</header>
+<div class="details_heading"><h2>Enter Your Details Here!!</h2></div>
+<div class="details_form">
+    <form method="post">
+     {% csrf_token %}
+    <label for="rank">Rank:</label>
+    <input type="number" name="rank" id="rank" required/><br><br>
+    <label for="field">Field:</label>
+    <select id="field" name="field">
+        <option value="select">-- SELECT --</option>
+        <option value="AERONAUTICAL ENGINEERING">AERONAUTICAL ENGINEERING</option>
+        <option value="ARTIFICIAL INTELLIGENCE AND DATA SCIENCE">ARTIFICIAL INTELLIGENCE AND DATA SCIENCE</option>
+        <option value="ARTIFICIAL INTELLIGENCE(A I) AND MACHINE LEARNING">ARTIFICIAL INTELLIGENCE(A I) AND
+            MACHINE LEARNING</option>
+        <option value="AUTOMOBILE ENGINEERING">AUTOMOBILE ENGINEERING</option>
+        <option value="BIOMEDICAL ENGINEERING">BIOMEDICAL ENGINEERING</option>
+        <option value="BIOTECHNOLOG Y">BIOTECHNOLOG Y</option>
+        <option value="CHEMICAL ENGINEERING">CHEMICAL ENGINEERING</option>
+        <option value="CIVIL & INFRASTRUCTU RE ENGINEERING">CIVIL & INFRASTRUCTU RE ENGINEERING</option>
+        <option value="CIVIL ENGINEERING">CIVIL ENGINEERING</option>
+        <option value="COMPUTER ENGINEERING">COMPUTER ENGINEERING</option>
+        <option value="COMPUTER SCIENCE & DESIGN">COMPUTER SCIENCE & DESIGN</option>
+        <option value="COMPUTER SCIENCE & ENGINEERING">COMPUTER SCIENCE & ENGINEERING</option>
+        <option value="COMPUTER ENGINEERING">COMPUTER ENGINEERING</option>
+        <option value="COMPUTER ENGINEERING (ARTIFICIAL INTELLIGENCE)">COMPUTER ENGINEERING
+            (ARTIFICIAL INTELLIGENCE)</option>
+        <option value="COMPUTER ENGINEERING (SOFTWARE ENGINEERING)">COMPUTER ENGINEERING (SOFTWARE ENGINEERING)
+        </option>
+        <option value="COMPUTER ENGINEERING- GUJARATI">COMPUTER ENGINEERING- GUJARATI</option>
+        <option value="COMPUTER SCIENCE & DESIGN">COMPUTER SCIENCE & DESIGN</option>
+        <option value="COMPUTER SCIENCE & ENGINEERING">COMPUTER SCIENCE & ENGINEERING</option>
+        <option value="COMPUTER SCIENCE & BUSINESS SYSTEMS">COMPUTER SCIENCE & BUSINESS SYSTEMS</option>
+        <option value="COMPUTER SCIENCE & ENGINEERING">COMPUTER SCIENCE & ENGINEERING</option>
+        <option value="COMPUTER SCIENCE & ENGINEERING (IOT)">COMPUTER SCIENCE & ENGINEERING (IOT)</option>
+        <option value="COMPUTER SCIENCE & ENGINEERING (ARTIFICIAL INTELLIGENCE)">COMPUTER SCIENCE & ENGINEERING
+            (ARTIFICIAL INTELLIGENCE)</option>
+        <option value="COMPUTER SCIENCE & ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)">COMPUTER
+            SCIENCE & ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)</option>
+        <option value="COMPUTER SCIENCE & ENGINEERING (BIG DATA ANALYTICS)">COMPUTER SCIENCE & ENGINEERING (BIG
+            DATA ANALYTICS)</option>
+        <option value="COMPUTER SCIENCE & ENGINEERING (CLOUD COMPUTING)">COMPUTER SCIENCE & ENGINEERING
+            (CLOUD COMPUTING)</option>
+        <option value="COMPUTER SCIENCE & ENGINEERING (CLOUD BASED APPLICATIONS)">COMPUTER SCIENCE & ENGINEERING
+            (CLOUD BASED APPLICATIONS)</option>
+        <option value="COMPUTER SCIENCE & ENGINEERING (CYBER SECURITY)">COMPUTER SCIENCE & ENGINEERING
+            (CYBER SECURITY)</option>
+        <option value="COMPUTER SCIENCE & ENGINEERING (DATA SCIENCE)">COMPUTER SCIENCE & ENGINEERING (DATA SCIENCE)
+        </option>
+        <option value="CYBER SECURITY">CYBER SECURITY</option>
+        <option value="Climate Change">Climate Change</option>
+        <option value="DAIRY TECHNOLOGY">DAIRY TECHNOLOGY</option>
+        <option value="ELECTRICAL ENGINEERING">ELECTRICAL ENGINEERING</option>
+        <option value="ELECTRICAL ENGINEERING">ELECTRICAL ENGINEERING</option>
+        <option value="ELECTRONICS & COMMUNICATI ON ENGINEERING">ELECTRONICS & COMMUNICATI ON ENGINEERING</option>
+        <option value="ELECTRONICS & INSTRUMENTAT ION ENGINEERING">ELECTRONICS & INSTRUMENTAT ION ENGINEERING
+        </option>
+        <option value="ELECTRONICS ENGINEERING">ELECTRONICS ENGINEERING</option>
+        <option value="ENVIRONMENT AL ENGINEERING">ENVIRONMENT AL ENGINEERING</option>
+        <option value="ENVIRONMENT AL ENGINEERING">ENVIRONMENT AL ENGINEERING</option>
+        <option value="FOOD PROCESSING TECHNOLOGY">FOOD PROCESSING TECHNOLOGY</option>
+        <option value="HONS. IN ICT WITH MINOR IN COMPUTATION AL SCIENCE (CS)">HONS. IN ICT WITH MINOR IN COMPUTATION AL SCIENCE (CS)</option>
+        <option value="INFORMATION & COMMUNICATI ON TECHNOLOGY">INFORMATION & COMMUNICATI ON TECHNOLOGY</option>
+        <option value="INFORMATION TECHNOLOGY">INFORMATION TECHNOLOGY</option>
+        <option value="INSTRUMENTAT ION & CONTROL ENGINEERING">INSTRUMENTAT ION & CONTROL ENGINEERING</option>
+        <option value="MARINE ENGINEERING">MARINE ENGINEERING</option>
+        <option value="MATHEMATICS AND COMPUTING">MATHEMATICS AND COMPUTING</option>
+        <option value="MECHANICAL ENGINEERING">MECHANICAL ENGINEERING</option>
+        <option value="MECHATRONICS">MECHATRONICS</option>
+        <option value="MECHATRONICS ENGINEERING">MECHATRONICS ENGINEERING</option>
+        <option value="METALLURGICA L AND MATERIALS ENGINEERING">METALLURGICA L AND MATERIALS ENGINEERING</option>
+        <option value="METALLURGY">METALLURGY</option>
+        <option value="MINING ENGINEERING">MINING ENGINEERING</option>
+        <option value="NANO TECHNOLOGY">NANO TECHNOLOGY</option>
+        <option value="PETROCHEMICA L ENGINEERING">PETROCHEMICA L ENGINEERING</option>
+        <option value="PHARMACEUTIC AL ENGINEERING">PHARMACEUTIC AL ENGINEERING</option>
+        <option value="PRODUCTION ENGINEERING">PRODUCTION ENGINEERING</option>
+        <option value="ROBOTICS AND AUTOMATION">ROBOTICS AND AUTOMATION</option>
+        <option value="TEXTILE ENGINEERING">TEXTILE ENGINEERING</option>
+        <option value="TEXTILE TECHNOLOGY">TEXTILE TECHNOLOGY</option>
+        <option value="WATER MANAGEMENT">WATER MANAGEMENT</option>
+    </select>
+    <br><br>
+  <input type="submit" value="Predict">
+  </form>
+</div>
+{% if pre %}
+<div class="predict_inst">
+    <h3>Predicted Institute:</h3>
+    <ul>
+        {% for p in pre %}
+        <li>{{p}}</li>
+        {% endfor %}
+        <li><b>Rank:</b> {{rank}}</li>
+        <li><b>Field:</b> {{field}}</li>
+    </ul>
+</div>
+{% endif %}
+<footer class="footer">
+    <small>&copy; Copyright 2024,COLLEGE PREDICTOR</small>
+</footer>
+</body>
+</html>

@@ -14,18 +14,18 @@
 <header>
     <nav class="navbar">
         <ul class="nav-list">
-            <li class="nav-item"><a href="/home" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
             <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
             <!-- <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li> -->
         </ul>
     </nav>
 </header>
-<div class="details_heading"><h2>Enter Your Details Here!!</h2></div>
+<div class="details_heading"><span class='head3'>Enter Your Details Here!!</span></div>
 <div class="details_form">
     <form method="post">
      {% csrf_token %}
     <label for="rank">Rank:</label>
-    <input type="number" name="rank" id="rank" required/><br><br>
+    <input type="number" name="rank" id="rank" required/>
     <label for="field">Field:</label>
     <select id="field" name="field">
         <option value="select">-- SELECT --</option>
@@ -100,16 +100,19 @@
         <option value="TEXTILE TECHNOLOGY">TEXTILE TECHNOLOGY</option>
         <option value="WATER MANAGEMENT">WATER MANAGEMENT</option>
     </select>
-    <br><br>
   <input type="submit" value="Predict">
   </form>
 </div>
 {% if pre %}
 <div class="predict_inst">
-    <h3>Predicted Institute:</h3>
+    <h3 class='head3'>Predicted Institute:</h3>
     <ul>
         {% for p in pre %}
+        {% if status %}
         <li>{{p}}</li>
+        {% else %}
+        <li class='error'>{{p}}</li>
+        {% endif %}
         {% endfor %}
         <li><b>Rank:</b> {{rank}}</li>
         <li><b>Field:</b> {{field}}</li>
@@ -117,7 +120,7 @@
 </div>
 {% endif %}
 <footer class="footer">
-    <small>&copy; Copyright 2024,COLLEGE PREDICTOR</small>
+    <small>&copy; Copyright 2024, COLLEGE PREDICTOR</small>
 </footer>
 </body>
 </html>
